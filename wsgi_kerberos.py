@@ -74,13 +74,13 @@ class KerberosAuthMiddleware(object):
 
         if unauthorized is None:
             unauthorized = ('Unauthorized', 'text/plain')
-        elif isinstance(unauthorized, basestring):
-            unauthorized = (unauthorized, 'text/plain')
+        elif isinstance(unauthorized, str):
+            unauthorized = (str.encode(unauthorized), 'text/plain')
 
         if forbidden is None:
             forbidden = ('Forbidden', 'text/plain')
-        elif isinstance(forbidden, basestring):
-            forbidden = (forbidden, 'text/plain')
+        elif isinstance(forbidden, str):
+            forbidden = (str.encode(forbidden), 'text/plain')
 
         if auth_required_callback is None:
             auth_required_callback = lambda x: True
